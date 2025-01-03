@@ -1,7 +1,7 @@
-"use client"
+'use client'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { toast } from 'react-toastify'; 
+import { toast } from 'react-toastify'; // Import toastify for notifications
 
 const BookingForm = () => {
   const [date, setDate] = useState('');
@@ -59,7 +59,7 @@ const BookingForm = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-4 bg-white rounded-xl shadow-lg mt-8">
+    <div className="max-w-lg mx-auto p-4 bg-white rounded-xl shadow-lg mt-8 sm:max-w-md sm:p-6 sm:mt-6">
       <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Table Booking Form</h2>
       
       {error && <p className="text-red-600 text-center mb-4">{error}</p>}
@@ -72,7 +72,7 @@ const BookingForm = () => {
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-md"
+            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
@@ -82,7 +82,7 @@ const BookingForm = () => {
             id="time"
             value={time}
             onChange={(e) => setTime(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-md"
+            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             disabled={!date || availableSlots.length === 0}
           >
             <option value="">Select Time</option>
@@ -102,7 +102,7 @@ const BookingForm = () => {
             value={guests}
             onChange={(e) => setGuests(e.target.value)}
             min="1"
-            className="w-full p-3 border border-gray-300 rounded-md"
+            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
@@ -113,7 +113,7 @@ const BookingForm = () => {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-md"
+            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
@@ -124,13 +124,13 @@ const BookingForm = () => {
             type="text"
             value={contact}
             onChange={(e) => setContact(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-md"
+            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
         <button
           type="submit"
-          className="w-full py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-200"
+          className="w-full py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           Book Table
         </button>
