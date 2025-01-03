@@ -66,7 +66,7 @@ const BookingForm = () => {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="date" className="block text-gray-700 font-medium">Date</label>
+          <label htmlFor="date" className="block text-gray-800 font-medium">Date</label>
           <input
             id="date"
             type="date"
@@ -77,7 +77,7 @@ const BookingForm = () => {
         </div>
 
         <div>
-          <label htmlFor="time" className="block text-gray-700 font-medium">Time</label>
+          <label htmlFor="time" className="block text-gray-800 font-medium">Time</label>
           <select
             id="time"
             value={time}
@@ -95,7 +95,7 @@ const BookingForm = () => {
         </div>
 
         <div>
-          <label htmlFor="guests" className="block text-gray-700 font-medium">Number of Guests</label>
+          <label htmlFor="guests" className="block text-gray-800 font-medium">Number of Guests</label>
           <input
             id="guests"
             type="number"
@@ -107,7 +107,7 @@ const BookingForm = () => {
         </div>
 
         <div>
-          <label htmlFor="name" className="block text-gray-700 font-medium">Your Name</label>
+          <label htmlFor="name" className="block text-gray-800 font-medium">Your Name</label>
           <input
             id="name"
             type="text"
@@ -118,7 +118,7 @@ const BookingForm = () => {
         </div>
 
         <div>
-          <label htmlFor="contact" className="block text-gray-700 font-medium">Contact Info</label>
+          <label htmlFor="contact" className="block text-gray-800 font-medium">Contact Info</label>
           <input
             id="contact"
             type="text"
