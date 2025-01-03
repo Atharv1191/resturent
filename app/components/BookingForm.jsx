@@ -1,7 +1,7 @@
-'use client'
+'use client';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { toast } from 'react-toastify'; // Import toastify for notifications
+import { toast } from 'react-toastify';
 
 const BookingForm = () => {
   const [date, setDate] = useState('');
@@ -16,7 +16,7 @@ const BookingForm = () => {
   useEffect(() => {
     if (date) {
       axios
-        .get('/api/bookings') 
+        .get('/api/bookings')
         .then((response) => {
           const bookedTimes = response.data.bookings
             .filter((booking) => booking.date === date)
@@ -29,17 +29,17 @@ const BookingForm = () => {
 
           setAvailableSlots(slots.filter((slot) => !bookedTimes.includes(slot)));
         })
-        .catch((err) => toast.error("Error fetching available slots")); // Show error toast
+        .catch((err) => toast.error("Error fetching available slots"));
     }
   }, [date]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); 
+    setError("");
 
     if (!date || !time || !name || !contact) {
       setError("Please fill in all fields.");
-      toast.error("Please fill in all fields."); // Show error toast for missing fields
+      toast.error("Please fill in all fields.");
       return;
     }
 
@@ -52,37 +52,37 @@ const BookingForm = () => {
         contact,
       });
 
-      toast.success(`Booking confirmed for ${name} on ${date} at ${time}`); // Show success toast
+      toast.success(`Booking confirmed for ${name} on ${date} at ${time}`);
     } catch (error) {
-      toast.error(error.response?.data?.message || "An error occurred"); // Show error toast
+      toast.error(error.response?.data?.message || "An error occurred");
     }
   };
 
   return (
-    <div className="max-w-lg mx-auto p-4 bg-white rounded-xl shadow-lg mt-8 sm:max-w-md sm:p-6 sm:mt-6">
-      <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Table Booking Form</h2>
+    <div className="max-w-xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-8">
+      <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">Table Booking Form</h2>
       
       {error && <p className="text-red-600 text-center mb-4">{error}</p>}
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="date" className="block text-gray-800 font-medium">Date</label>
+          <label htmlFor="date" className="block text-gray-700 font-medium mb-2">Date</label>
           <input
             id="date"
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
         <div>
-          <label htmlFor="time" className="block text-gray-800 font-medium">Time</label>
+          <label htmlFor="time" className="block text-gray-700 font-medium mb-2">Time</label>
           <select
             id="time"
             value={time}
             onChange={(e) => setTime(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             disabled={!date || availableSlots.length === 0}
           >
             <option value="">Select Time</option>
@@ -95,42 +95,42 @@ const BookingForm = () => {
         </div>
 
         <div>
-          <label htmlFor="guests" className="block text-gray-800 font-medium">Number of Guests</label>
+          <label htmlFor="guests" className="block text-gray-700 font-medium mb-2">Number of Guests</label>
           <input
             id="guests"
             type="number"
             value={guests}
             onChange={(e) => setGuests(e.target.value)}
             min="1"
-            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
         <div>
-          <label htmlFor="name" className="block text-gray-800 font-medium">Your Name</label>
+          <label htmlFor="name" className="block text-gray-700 font-medium mb-2">Your Name</label>
           <input
             id="name"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
         <div>
-          <label htmlFor="contact" className="block text-gray-800 font-medium">Contact Info</label>
+          <label htmlFor="contact" className="block text-gray-700 font-medium mb-2">Contact Info</label>
           <input
             id="contact"
             type="text"
             value={contact}
             onChange={(e) => setContact(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
         <button
           type="submit"
-          className="w-full py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-200"
         >
           Book Table
         </button>
